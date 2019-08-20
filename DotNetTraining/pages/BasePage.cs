@@ -16,6 +16,12 @@ namespace DotNetTraining.pages
             }
         }
 
+        public IList<IWebElement> CategoriesList {
+            get {
+                return driver.FindElements(By.CssSelector(".sf-menu>li"));
+            }
+        }
+
         public IWebElement MainLogo {
             get {
                 return driver.FindElement(By.Id("header_logo"));
