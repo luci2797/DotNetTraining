@@ -1,0 +1,12 @@
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\bin\Debug\netcoreapp2.1\DotNetTraining.deps.json
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\bin\Debug\netcoreapp2.1\DotNetTraining.runtimeconfig.json
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\bin\Debug\netcoreapp2.1\DotNetTraining.runtimeconfig.dev.json
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\bin\Debug\netcoreapp2.1\DotNetTraining.dll
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\obj\Debug\netcoreapp2.1\DotNetTraining.csprojAssemblyReference.cache
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\obj\Debug\netcoreapp2.1\DotNetTraining.csproj.CoreCompileInputs.cache
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\obj\Debug\netcoreapp2.1\DotNetTraining.AssemblyInfoInputs.cache
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\obj\Debug\netcoreapp2.1\DotNetTraining.AssemblyInfo.cs
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\bin\Debug\netcoreapp2.1\NUnit3.TestAdapter.dll
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\bin\Debug\netcoreapp2.1\NUnit3.TestAdapter.pdb
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\bin\Debug\netcoreapp2.1\nunit.engine.dll
+C:\Users\lucianseican\source\repos\DotNetTraining\DotNetTraining\bin\Debug\netcoreapp2.1\nunit.engine.api.dll
