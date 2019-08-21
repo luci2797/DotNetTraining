@@ -77,5 +77,9 @@ namespace DotNetTraining.pages
             }
             return is_logged_in;
         }
+
+        public void ChooseCategoryByName(string name) {
+            WebElementInteractions.ChooseByNameFromList(CategoriesList, name).Click();
+        }
     }
 }

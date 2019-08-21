@@ -15,7 +15,7 @@ namespace DotNetTraining.steps
             basePage.SearchBar.Submit();
         }
 
-        public bool CheckIfLoggedIn() {
+        public bool IsUserLoggedIn() {
             Console.WriteLine("is the user logged in : " + basePage.IsUserLoggedIn());
             return basePage.IsUserLoggedIn();
         }
@@ -27,13 +27,17 @@ namespace DotNetTraining.steps
         }
 
         public void NavigateToLoginPage() {
-            if (!this.CheckIfLoggedIn())
+            if (!this.IsUserLoggedIn())
             {
                 WebElementInteractions.ClickButton(basePage.LoginButton);
             }
             else {
                 Console.WriteLine("user is already logged in");
             }
+        }
+
+        public void NavigateToCategory(string category) {
+            basePage.ChooseCategoryByName(category);
         }
     }
 }
