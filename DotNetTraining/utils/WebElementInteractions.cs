@@ -12,5 +12,19 @@ namespace DotNetTraining.utils
             element.Clear();
             element.SendKeys(text);
         }
+
+        public static void ClickButton(IWebElement element) {
+            element.Click();
+        }
+
+        public static IWebElement ChooseByNameFromList(IList<IWebElement> list, string name)
+        {
+            foreach (IWebElement element in list) {
+                if (element.Text.ToLower().Contains(name)) {
+                    return element;
+                }
+            }
+            return null;
+        }
     }
 }

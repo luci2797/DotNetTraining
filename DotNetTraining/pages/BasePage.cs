@@ -9,6 +9,7 @@ namespace DotNetTraining.pages
     class BasePage
     {
         protected IWebDriver driver = DriverManager.driver;
+        private bool is_logged_in = false;
 
         public IWebElement SearchBar {
             get {
@@ -54,6 +55,27 @@ namespace DotNetTraining.pages
 
         public string GetCurrentUrl() {
             return driver.Url;
+        }
+
+        public bool IsUserLoggedIn() {
+            try
+            {
+                IWebElement element = LoginButton;
+                //Console.WriteLine("login button:" + LoginButton.Text);
+            }
+            catch (NoSuchElementException) {
+                is_logged_in = true;//if login button is not displayed the user is already logged in 
+            }
+
+            try
+            {
+                IWebElement element = LogoutButton;
+                //Console.WriteLine("logout button: " + LogoutButton.Text);
+            }
+            catch (NoSuchElementException) {
+                is_logged_in = false;//if logout button is not displayed the user is not logged in 
+            }
+            return is_logged_in;
         }
     }
 }
