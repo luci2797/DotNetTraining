@@ -87,6 +87,11 @@ namespace DotNetTraining.pages
             WebElementInteractions.ClickButton(list[randomIndex]);
         }
 
+        public void SelectElementInList(IList<IWebElement> list, int index) {
+            WebElementInteractions.ClickButton(list[index]);
+        }
+
+
         public void MoveSliderHead(IWebElement sliderHead ,SliderHandle sliderHandle) {
             sliderHead.Click();
             if (sliderHandle == SliderHandle.LEFT)
@@ -102,6 +107,14 @@ namespace DotNetTraining.pages
                     sliderHead.SendKeys(Keys.ArrowRight);
                 }
             }
+        }
+
+        public void DisplayStringList(List<string> list)
+        {
+            foreach (string element in list) {
+                Console.Write(element + " ");
+            }
+
         }
     }
 }

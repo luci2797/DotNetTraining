@@ -1,5 +1,6 @@
 ﻿using DotNetTraining.models;
 using DotNetTraining.pages;
+using DotNetTraining.utils;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,11 @@ namespace DotNetTraining.steps
 
         public void CheckIfPricesAreInRange() {
             Assert.IsTrue(productListPage.AreProductsInPriceRange());
+        }
+
+        public void ChooseAndSaveRandomProduct() {
+            productListPage.ChooseAndSaveRandomProduct();
+            Console.WriteLine(Constants.ChosenProduct.ToString());
         }
     }
 }

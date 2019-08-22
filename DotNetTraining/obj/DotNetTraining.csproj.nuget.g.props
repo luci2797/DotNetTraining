@@ -22,5 +22,6 @@
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgNewtonsoft_Json Condition=" '$(PkgNewtonsoft_Json)' == '' ">C:\Users\lucianseican\.nuget\packages\newtonsoft.json\10.0.3</PkgNewtonsoft_Json>
     <PkgNUnit_ConsoleRunner Condition=" '$(PkgNUnit_ConsoleRunner)' == '' ">C:\Users\lucianseican\.nuget\packages\nunit.consolerunner\3.10.0</PkgNUnit_ConsoleRunner>
+    <PkgEntityFramework Condition=" '$(PkgEntityFramework)' == '' ">C:\Users\lucianseican\.nuget\packages\entityframework\6.0.0</PkgEntityFramework>
   </PropertyGroup>
 </Project>

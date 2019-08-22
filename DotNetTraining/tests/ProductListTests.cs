@@ -26,8 +26,7 @@ namespace DotNetTraining.tests
             productListSteps.LowerMaxPrice();
             productListSteps.RaiseMinPrice();
             productListSteps.CheckIfPricesAreInRange();
-            //productListSteps.DisplayMaxPrice();
-            //System.Threading.Thread.Sleep(5000);
+            //productListSteps.ChooseAndSaveRandomProduct();
         }
     }
 }

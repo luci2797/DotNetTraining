@@ -41,6 +41,12 @@ namespace DotNetTraining.pages
             }
         }
 
+        IList<IWebElement> ProductLinkList {
+            get {
+                return driver.FindElements(By.CssSelector(".ajax_block_product .product-name"));
+            }
+        }
+
         IWebElement PriceRangeLabel {
             get
             {
@@ -115,7 +121,12 @@ namespace DotNetTraining.pages
             foreach (IWebElement element in ProductList) {
                 string name = element.FindElement(By.CssSelector(".product-name")).Text;
                 float price = Conversions.StringToPrice(element.FindElement(By.CssSelector(".right-block .price")).Text);
-                products.Add(new Product(name, price));
+                Product product = new Product(name, price);
+                IList<IWebElement> productColors = element.FindElements(By.CssSelector(".color_to_pick_list a"));
+                foreach (IWebElement color in productColors) {
+                    product.AddColor(Conversions.StringToColorCode(color.GetAttribute("style")));
+                }
+                products.Add(product);
             }
             return products;
         }
@@ -158,6 +169,15 @@ namespace DotNetTraining.pages
                 }
             }
             return areInRange;
+        }
+
+        public void ChooseAndSaveRandomProduct() {
+            if (this.ProductList.Count > 0) {
+                int randomIndex = Constants.RANDOM_NUMBER.Next(0, ProductList.Count);
+                //Session[Constants.PRODUCT_SESSION_VAR] = this.GetProductObjects()[randomIndex];
+                Constants.ChosenProduct = this.GetProductObjects()[randomIndex];
+                this.SelectElementInList(ProductLinkList, randomIndex);
+            }
         }
 
     }
