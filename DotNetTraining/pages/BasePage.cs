@@ -1,5 +1,7 @@
-﻿using DotNetTraining.utils;
+﻿using Amazon.DynamoDBv2;
+using DotNetTraining.utils;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -114,7 +116,19 @@ namespace DotNetTraining.pages
             foreach (string element in list) {
                 Console.Write(element + " ");
             }
+        }
 
+        public void SelectRandomOptionFromDropdown(IWebElement dropdownList) {
+            var selectElement = new SelectElement(dropdownList);
+            string[] options = dropdownList.Text.Split("\n");
+            int randomIndex = Constants.RANDOM_NUMBER.Next(0, options.Length - 1);
+            selectElement.SelectByIndex(randomIndex);
+            Console.WriteLine("\noption selected:" + options[randomIndex]);
+        }
+
+        public void InputRandomAmount(IWebElement textField) {
+            string randomAmount = Constants.RANDOM_NUMBER.Next(1, 10).ToString();
+            WebElementInteractions.InputText(textField, randomAmount);
         }
     }
 }

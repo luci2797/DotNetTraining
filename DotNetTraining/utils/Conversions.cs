@@ -24,5 +24,11 @@ namespace DotNetTraining.utils
             string newPrice = text.Substring(1);
             return float.Parse(newPrice, CultureInfo.InvariantCulture.NumberFormat);
         }
+
+        public static int StringToDiscountPercent(string text) {
+            string trimmedPrice = text.Replace("-", string.Empty);
+            trimmedPrice = trimmedPrice.Replace("%", string.Empty);
+            return int.Parse(trimmedPrice);
+        }
     }
 }
