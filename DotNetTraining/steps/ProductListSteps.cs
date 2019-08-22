@@ -28,5 +28,33 @@ namespace DotNetTraining.steps
         public void CheckColors() {
             Assert.IsTrue(productListPage.AreColorsDisplayedCorrect());
         }
+
+        public void DisplayProducts() {
+            productListPage.DisplayProducts();
+        }
+
+        public void ChooseRandomProduct() {
+            productListPage.SelectRandomElementInList(productListPage.ProductList);
+        }
+
+        public void LowerMaxPrice() {
+            productListPage.MoveRightSlider(utils.SliderHandle.LEFT);
+        }
+
+        public void RaiseMinPrice() {
+            productListPage.MoveLeftSlider(utils.SliderHandle.RIGHT);
+        }
+
+        public void DisplayMinPrice() {
+            Console.WriteLine("the minimum price is:" + productListPage.GetLimitPrice(utils.MinOrMax.MIN));
+        }
+
+        public void DisplayMaxPrice() {
+            Console.WriteLine("the maximum price is:" + productListPage.GetLimitPrice(utils.MinOrMax.MAX));
+        }
+
+        public void CheckIfPricesAreInRange() {
+            Assert.IsTrue(productListPage.AreProductsInPriceRange());
+        }
     }
 }

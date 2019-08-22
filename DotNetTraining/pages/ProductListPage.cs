@@ -17,9 +17,9 @@ namespace DotNetTraining.pages
             }
         }
 
-        IList<IWebElement> ProductList {
+        public IList<IWebElement> ProductList {
             get {
-                return driver.FindElements(By.CssSelector(".ajax_block_product "));
+                return driver.FindElements(By.CssSelector(".ajax_block_product"));
             }
         }
 
@@ -32,6 +32,19 @@ namespace DotNetTraining.pages
         IList<IWebElement> ColorLabels {
             get {
                 return driver.FindElements(By.CssSelector(".layered_color"));
+            }
+        }
+
+        IList<IWebElement> PriceSliderHeads {
+            get {
+                return driver.FindElements(By.CssSelector(".ui-slider-handle"));
+            }
+        }
+
+        IWebElement PriceRangeLabel {
+            get
+            {
+                return driver.FindElement(By.CssSelector("#layered_price_range"));
             }
         }
 
@@ -69,6 +82,8 @@ namespace DotNetTraining.pages
             return colors;
         }
 
+        
+
         public void DisplayColorObjects() {
             foreach (ColorOption color in this.GetColorOptionsObjects()) {
                 Console.WriteLine(color.ToString());
@@ -83,7 +98,7 @@ namespace DotNetTraining.pages
 
         public bool AreColorsDisplayedCorrect() {
             bool areColorsCorrect = true;
-            for(int i = 0; i < ColorSortingOptions.Count;i++)
+            for (int i = 0; i < ColorSortingOptions.Count; i++)
             {
                 string actualNumber = this.GetColorOptionsObjects()[i].NumberOfProducts.ToString();
                 if (!ColorSortingOptions[i].Text.Contains(actualNumber)) {
@@ -94,5 +109,56 @@ namespace DotNetTraining.pages
             return areColorsCorrect;
 
         }
+
+        public List<Product> GetProductObjects() {
+            List<Product> products = new List<Product>();
+            foreach (IWebElement element in ProductList) {
+                string name = element.FindElement(By.CssSelector(".product-name")).Text;
+                float price = Conversions.StringToPrice(element.FindElement(By.CssSelector(".right-block .price")).Text);
+                products.Add(new Product(name, price));
+            }
+            return products;
+        }
+
+        public void DisplayProducts() {
+            foreach (Product product in this.GetProductObjects()) {
+                Console.WriteLine(product.ToString());
+            }
+        }
+
+        public void MoveLeftSlider(SliderHandle direction) {
+            base.MoveSliderHead(PriceSliderHeads[0], direction);
+        }
+
+        public void MoveRightSlider(SliderHandle direction) {
+            base.MoveSliderHead(PriceSliderHeads[1], direction);
+        }
+
+        public float GetLimitPrice(MinOrMax minOrMax) {
+            string priceRange = PriceRangeLabel.Text.Replace(" ", string.Empty);
+            string[] values = priceRange.Split("-");
+            if (minOrMax == MinOrMax.MIN)
+            {
+                return Conversions.StringToPrice(values[0]);
+            }
+            else {
+                return Conversions.StringToPrice(values[1]);
+            }
+
+        }
+
+        public bool AreProductsInPriceRange() {
+            float minPrice = GetLimitPrice(MinOrMax.MIN);
+            float maxPrice = GetLimitPrice(MinOrMax.MAX);
+            bool areInRange = true;
+            foreach (Product product in GetProductObjects()) {
+                if (product.Price > maxPrice || product.Price < minPrice) {
+                    areInRange = false;
+                    break;
+                }
+            }
+            return areInRange;
+        }
+
     }
 }

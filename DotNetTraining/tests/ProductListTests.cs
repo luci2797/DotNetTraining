@@ -1,4 +1,5 @@
 ﻿using DotNetTraining.steps;
+using DotNetTraining.utils;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,16 @@ namespace DotNetTraining.tests
             productListSteps.DisplayColorOptions();
             productListSteps.DisplayCountedColors();
             productListSteps.CheckColors();
+        }
+
+        [Test]
+        public void PriceSortTest() {
+            baseSteps.NavigateToCategory("dresses");
+            productListSteps.LowerMaxPrice();
+            productListSteps.RaiseMinPrice();
+            productListSteps.CheckIfPricesAreInRange();
+            //productListSteps.DisplayMaxPrice();
+            //System.Threading.Thread.Sleep(5000);
         }
     }
 }

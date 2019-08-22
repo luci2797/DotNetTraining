@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace DotNetTraining.utils
@@ -17,6 +18,11 @@ namespace DotNetTraining.utils
             }
             return colorcode;
             
+        }
+
+        public static float StringToPrice(string text) {
+            string newPrice = text.Substring(1);
+            return float.Parse(newPrice, CultureInfo.InvariantCulture.NumberFormat);
         }
     }
 }

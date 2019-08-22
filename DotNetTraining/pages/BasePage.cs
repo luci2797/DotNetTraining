@@ -81,5 +81,27 @@ namespace DotNetTraining.pages
         public void ChooseCategoryByName(string name) {
             WebElementInteractions.ChooseByNameFromList(CategoriesList, name).Click();
         }
+
+        public void SelectRandomElementInList(IList<IWebElement> list) {
+            int randomIndex = Constants.RANDOM_NUMBER.Next(0, list.Count - 1);
+            WebElementInteractions.ClickButton(list[randomIndex]);
+        }
+
+        public void MoveSliderHead(IWebElement sliderHead ,SliderHandle sliderHandle) {
+            sliderHead.Click();
+            if (sliderHandle == SliderHandle.LEFT)
+            {
+                for (int i = 0; i < Constants.RANDOM_NUMBER.Next(3, 10); i++)
+                {
+                    sliderHead.SendKeys(Keys.ArrowLeft);
+                }
+            }
+            else {
+                for (int i = 0; i < Constants.RANDOM_NUMBER.Next(3, 10); i++)
+                {
+                    sliderHead.SendKeys(Keys.ArrowRight);
+                }
+            }
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace DotNetTraining.utils
         public static string SEARCH_TERM = "shirt";
         public static string VALID_EMAIL_ADDRESS = "aabc@gmail.com";
         public static string VALID_PASSWORD = "password";
+        public static Random RANDOM_NUMBER = new Random();
     }
 }
